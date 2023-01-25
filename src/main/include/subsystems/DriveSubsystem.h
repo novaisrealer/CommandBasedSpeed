@@ -7,6 +7,10 @@
 #include <frc/motorcontrol/Spark.h>
 #include <frc2/command/SubsystemBase.h>
 #include <frc/XboxController.h>
+#include <frc/Encoder.h>
+#include <frc/controller/PIDController.h>
+
+
 
 class DriveSubsystem : public frc2::SubsystemBase {
  public:
@@ -22,4 +26,10 @@ class DriveSubsystem : public frc2::SubsystemBase {
   frc::Spark samSmith{1};  
 
   frc::XboxController m_xbox{0};
+
+  frc::Encoder samSmithEncoder{3 , 4};
+
+  frc2::PIDController samSmithPID{0.01, 0, 0};
+
+
 };

@@ -19,5 +19,6 @@ void DriveSubsystem::SimulationPeriodic() {
 }
 
 void DriveSubsystem::Drive() {
-    samSmith.Set(m_xbox.GetRightTriggerAxis());
+    samSmith.Set(m_xbox.GetLeftX());
+    
 }
