@@ -6,7 +6,12 @@
 
 DriveSubsystem::DriveSubsystem() {
   // Implementation of subsystem constructor goes here.
+  samSmithEncoder.Reset();
+
   
+
+  
+
 }
 
 void DriveSubsystem::Periodic() {
@@ -18,7 +23,27 @@ void DriveSubsystem::SimulationPeriodic() {
   // Implementation of subsystem simulation periodic method goes here.
 }
 
-void DriveSubsystem::Drive() {
-    samSmith.Set(m_xbox.GetLeftX());
+void DriveSubsystem::Drive()  {
+  
+  double setpoint;
+
+  double error;
+
+  double outputSpeed = kP * error;
+
+  if (m_xbox.GetAButton() ) {
+    error = 0 - samSmithEncoder.Get();
+    samSmith.Set(outputSpeed);
+  } else if (m_xbox.GetBButton()){
+    error = 500 - samSmithEncoder.Get();
+    samSmith.Set(outputSpeed);
+  } else {
+    samSmith.Set(0);
+  }
     
-}
+  }
+  // double sensorPosition = samSmithEncoder.Get() * kDriveTickTwoFeet;
+
+  // double error = setpoint - sensorPosition;
+    
+

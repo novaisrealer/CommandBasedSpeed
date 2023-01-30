@@ -9,6 +9,8 @@
 #include <frc/XboxController.h>
 #include <frc/Encoder.h>
 #include <frc/controller/PIDController.h>
+#include <cmath>
+ 
 
 
 
@@ -29,7 +31,8 @@ class DriveSubsystem : public frc2::SubsystemBase {
 
   frc::Encoder samSmithEncoder{3 , 4};
 
-  frc2::PIDController samSmithPID{0.01, 0, 0};
+  double kP = 0.002;
 
+  double kDriveTickTwoFeet = 1.0 / 128 * 6 * M_PI / 12;
 
 };
